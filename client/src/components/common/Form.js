@@ -5,15 +5,15 @@ import { string, shape, func } from 'prop-types';
 class Form extends React.Component{
 
   render(){
-    const { header, form, label, input, children } = this.props;
+    const { form, label, input, children } = this.props;
     return (
     <div>
-      <h1>{header}</h1>
       <form 
         className={form.class}
         action={form.action}
         method={form.method}
         target={form.target}
+        encType={form.encType}
         ref={form.setRef}>
         <label>{label} </label>
         <input 
@@ -34,7 +34,6 @@ class Form extends React.Component{
 }
 
 Form.defaultProps = {
-  header: '',
   form: {
     class: 'form',
     target: '_blank'
@@ -43,12 +42,12 @@ Form.defaultProps = {
   input: {}
 }
 Form.propTypes = {
-  header: string,
   form: shape({
     class: string,
     action: string.isRequired,
     method: string.isRequired,
     target: string,
+    encType: string,
     setRef: func,
   }),
   label: string,
@@ -59,7 +58,7 @@ Form.propTypes = {
     value: string,
     onChange: func,
     setRef: func,
-  })
+  }),
 }
 
 export default Form;

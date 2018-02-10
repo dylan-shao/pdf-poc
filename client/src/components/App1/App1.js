@@ -30,9 +30,7 @@ class App1 extends Component {
 
   render() {
     const { address } = this.state;
-    const { submitHandler } = this;
     const props = {
-      header: 'Part 1',
       form : {
         class: 'form address-form',
         action: '/part1/pdf',
@@ -53,9 +51,10 @@ class App1 extends Component {
     };
     return (
       <div className="app1 container">
+        <h1>Part 1</h1>
         <Form {...props}>
-          <button onClick={()=>submitHandler(1)}>Generate smart_form_1.pdf</button>
-          <button onClick={()=>submitHandler(2)}>Generate smart_form_2.pdf</button>
+          <button onClick={()=>this.submitHandler(1)}>Generate smart_form_1.pdf</button>
+          <button onClick={()=>this.submitHandler(2)}>Generate smart_form_2.pdf</button>
         </Form>
       </div>
     );
