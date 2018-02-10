@@ -3,25 +3,25 @@ import { string, shape, func } from 'prop-types';
 class Form extends React.Component{
 
   render(){
-    const { props } = this;
+    const { header, form, label, input, children } = this.props;
     return (
     <div>
-      <h1>{props.header}</h1>
+      <h1>{header}</h1>
       <form 
-        className={props.form.class}
-        action={props.form.action}
-        method={props.form.method}
-        target={props.form.target}
-        ref={props.form.setRef}>
-        <label>{props.label} </label>
+        className={form.class}
+        action={form.action}
+        method={form.method}
+        target={form.target}
+        ref={form.setRef}>
+        <label>{label} </label>
         <input 
-          type={props.input.type} 
-          name={props.input.name} 
-          id={props.input.id} 
-          value={props.input.value} 
-          onChange={props.input.onChange} />
+          type={input.type} 
+          name={input.name} 
+          id={input.id} 
+          value={input.value} 
+          onChange={input.onChange} />
       </form>
-      {React.Children.map(props.children, child => {
+      {React.Children.map(children, child => {
         return child
       })}
     </div>
@@ -37,7 +37,7 @@ Form.defaultProps = {
   },
   label: '',
   input: {
-    
+
   }
 }
 Form.propTypes = {
