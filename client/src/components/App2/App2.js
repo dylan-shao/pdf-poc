@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Redirect, withRouter } from 'react-router';
 import './App2.css';
 
-const instance = axios.create({
+const axioProxy = axios.create({
   baseURL: 'http://localhost:5000',
   timeout: 5000
 });
@@ -13,22 +13,21 @@ const instance = axios.create({
 class App2 extends React.Component {
   constructor() {
     super();
-    this.state = {
-      results: {}
-    }
   }
-  generateFields = () => {
+  generateFields = (e) => {
+    e.preventDefault();
     const myFile = this.input.files[0];
     var formData = new FormData();
     formData.append("myFile", myFile);
     console.log(formData);
 
-    instance.post('/part2/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+    axioProxy.post('/part2/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
       .then(res => {
         if(Object.keys(res.data).length ===0) {
           alert('No dta fields found!');
         }else {
-          this.props.history.push('/part2/input');
+          this.props.history.push('/inputfields');
+          return;
         }
         })
       .catch(error => {
@@ -42,6 +41,7 @@ class App2 extends React.Component {
         action: '/part2/upload',
         method: 'post',
         encType: 'multipart/form-data',
+        onSubmit: this.generateFields,
         setRef: (form)=> {
           this.form = form;
         },
@@ -62,7 +62,7 @@ class App2 extends React.Component {
       <div className="app2 container">
         <h1>Part 2</h1>
         <Form {...props}>
-          <button onClick={()=>this.generateFields()}>generate fields</button>
+          <button type="submit">generate fields</button>
         </Form>
       </div>
     );

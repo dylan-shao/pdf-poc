@@ -1,52 +1,75 @@
 import React from 'react';
 import Form from '../common/Form';
 import axios from 'axios';
+import './InputFields.css';
+
+const axioProxy = axios.create({
+  baseURL: 'http://localhost:5000',
+  timeout: 5000
+});
 
 class InputFields extends React.Component {
   constructor(){
     super();
     this.state = {
-      fields:{}
+      fields: {'df':''}
     };
   }
 
   componentDidMount() {
-    axios.get('/part2/get')
-     .then(function(res){
+    axioProxy.get('/part2/get')
+     .then(res => {
         this.setState({
-           fields: res
+           fields: res.data,
         })
      });
   }
 
+  onChange() {
+
+  }
+  
+
   render() {
+    const { fields } = this.state;
+    const keysArray = Object.keys(fields);
+    const length = keysArray.length;
+    const _generateInput = (key) => {
+      return (
+        <div className="input-item">
+          <label>{key}</label>
+          <input 
+            type='text'
+            name={key} 
+            id={key} 
+            key={key}
+            value={fields[key]} 
+            onChange={this.onChange}
+          />
+        </div>
+      );
+    }
     const props = {
       form : {
-        class: 'form upload-form',
-        action: '/part2/upload',
+        class: 'form address-form',
+        action: '/part1/pdf',
         method: 'post',
-        encType: 'multipart/form-data',
+        target: '_blank',
         setRef: (form)=> {
           this.form = form;
         },
       },
       input: {
-        flag: true,
-        type: 'file',
-        name: 'myFile',
-        id: 'myFile',
-        onChange: this.onChange,
-        setRef: (input)=> {
-          this.input = input;
-        },
-      },
+        flag: false,
+      }
     };
-
     return (
-      <div className="app2 container">
-        <h1>Part 2</h1>
+      <div className="container">
+        <h1>Input Fields</h1>
         <Form {...props}>
-          <button onClick={()=>this.generateFields()}>generate fields</button>
+          {keysArray.map(key=>{
+             return _generateInput(key);
+           })}
         </Form>
       </div>
     );

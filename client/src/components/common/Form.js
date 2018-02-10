@@ -14,6 +14,7 @@ class Form extends React.Component{
         method={form.method}
         target={form.target}
         encType={form.encType}
+        onSubmit={form.onSubmit}
         ref={form.setRef}>
         <label>{label} </label>
         {input.flag && 
@@ -58,9 +59,9 @@ Form.propTypes = {
   }),
   label: string,
   input: shape({
-    type: string.isRequired,
-    name: string.isRequired,
-    id: string.isRequired,
+    type: string,
+    name: string,
+    id: string,
     value: string,
     onChange: func,
     setRef: func,

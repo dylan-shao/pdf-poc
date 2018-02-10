@@ -21,11 +21,7 @@ part2Router.post('/upload', upload.single('myFile'), (req, res, next) => {
 
   const FDF_data = pdfFiller.generateFDFTemplate(sourcePDF, null, (err, fdfData) => {
     if (err) throw err;
-    // res.end(JSON.stringify(fdfData));
-    // res.redirect('/part2/get');
-    // res.redirect('http://localhost:3000/part1');
     console.log(fdfData)
-    // cache[req.file.filename] = fdfData;
     dataFields = fdfData;
     res.end(JSON.stringify(fdfData));    
   });

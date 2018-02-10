@@ -1,0 +1,12 @@
+.container {
+  text-align: center;
+}
+.input-item {
+  display: flex;
+  margin-left: 20%;
+  margin-bottom: 10px;
+}
+
+.input-item label {
+  width: 150px;
+}

@@ -14,7 +14,7 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/part1" component={App1} />
         <Route exact path="/part2" component={App2} />
-        <Route exact path="/part2/input" component={InputFields} />
+        <Route exact path="/inputfields" component={InputFields} />
       </Switch>
     </BrowserRouter>
   </div>, 
