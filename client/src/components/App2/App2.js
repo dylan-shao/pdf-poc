@@ -5,7 +5,7 @@ class App2 extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="app2 container">
         df
       </div>
     );

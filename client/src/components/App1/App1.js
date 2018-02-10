@@ -31,7 +31,7 @@ class App1 extends Component {
     const { address } = this.state;
     const { submitHandler } = this;
     return (
-      <div className="App">
+      <div className="app1 container">
         <h1>Part 1</h1>
         <form 
           className="form address-form"
