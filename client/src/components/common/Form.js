@@ -1,5 +1,7 @@
 import React from 'react';
 import { string, shape, func } from 'prop-types';
+
+//keep it class because I need to access 'refs' for different ele
 class Form extends React.Component{
 
   render(){
