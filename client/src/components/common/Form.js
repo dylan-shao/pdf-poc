@@ -16,17 +16,22 @@ class Form extends React.Component{
         encType={form.encType}
         ref={form.setRef}>
         <label>{label} </label>
-        <input 
-          type={input.type} 
-          name={input.name} 
-          id={input.id} 
-          value={input.value} 
-          onChange={input.onChange}
-          ref={input.setRef} />
+        {input.flag && 
+          <input 
+            type={input.type} 
+            name={input.name} 
+            id={input.id} 
+            value={input.value} 
+            onChange={input.onChange}
+            ref={input.setRef} 
+          />
+        }
+          <br />
+          {React.Children.map(children, child => {
+            return child
+          })} 
       </form>
-      {React.Children.map(children, child => {
-        return child
-      })}     
+          
     </div>
     );
   }

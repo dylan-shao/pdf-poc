@@ -42,6 +42,7 @@ class App1 extends Component {
       },
       label: 'Address',
       input: {
+        flag: true,
         type: 'text',
         name: 'address',
         id: 'address',
@@ -53,8 +54,8 @@ class App1 extends Component {
       <div className="app1 container">
         <h1>Part 1</h1>
         <Form {...props}>
-          <button onClick={()=>this.submitHandler(1)}>Generate smart_form_1.pdf</button>
-          <button onClick={()=>this.submitHandler(2)}>Generate smart_form_2.pdf</button>
+          <a className="ui primary basic button" type="submit" onClick={()=>this.submitHandler(1)}>Generate smart_form_1.pdf</a>
+          <a className="ui primary basic button"type="submit"onClick={()=>this.submitHandler(2)}>Generate smart_form_2.pdf</a>
         </Form>
       </div>
     );

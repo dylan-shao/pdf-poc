@@ -47,6 +47,7 @@ class App2 extends React.Component {
         },
       },
       input: {
+        flag: true,
         type: 'file',
         name: 'myFile',
         id: 'myFile',
@@ -63,11 +64,6 @@ class App2 extends React.Component {
         <Form {...props}>
           <button onClick={()=>this.generateFields()}>generate fields</button>
         </Form>
-        {Object.keys(this.state.results).length &&
-          <Redirect to={{
-            pathname: '/part1',
-            state: { results: this.state.results }
-          }} />}
       </div>
     );
   }
