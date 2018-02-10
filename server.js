@@ -1,5 +1,6 @@
 const express = require('express');
 const part1Router = require('./routes/part1/api1');
+const part2Router = require('./routes/part2/api2');
 const bodyParser = require('body-parser');
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({
 })); 
 
 app.use('/part1', part1Router);
+app.use('/part2', part2Router);
 
 app.get('/test', (req, res) => {
   res.send('hello pdf');

@@ -21,13 +21,12 @@ class Form extends React.Component{
           name={input.name} 
           id={input.id} 
           value={input.value} 
-          onChange={input.onChange} />
-          <br />
-          {React.Children.map(children, child => {
-            return child
-          })}
+          onChange={input.onChange}
+          ref={input.setRef} />
       </form>
-      
+      {React.Children.map(children, child => {
+        return child
+      })}     
     </div>
     );
   }
@@ -39,7 +38,9 @@ Form.defaultProps = {
     target: '_blank'
   },
   label: '',
-  input: {}
+  input: {
+
+  }
 }
 Form.propTypes = {
   form: shape({
