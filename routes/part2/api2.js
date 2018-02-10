@@ -15,7 +15,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-
 part2Router.post('/upload', upload.single('myFile'), (req, res, next) => {
   const sourcePDF = "./public/files/" + req.file.originalname;
 
@@ -23,7 +22,6 @@ part2Router.post('/upload', upload.single('myFile'), (req, res, next) => {
     if (err) throw err;
     console.log(fdfData);
   });
-
 
   res.end('complete');
 });
