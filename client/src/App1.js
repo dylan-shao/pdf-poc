@@ -12,14 +12,19 @@ class App1 extends Component {
   onChange = e => {
     this.setState({
       address: e.target.value
-    })
+    });
   }
+
   render() {
     const { address } = this.state;
     return (
       <div className="App">
         <h1>Part 1</h1>
-        <form className="form address-form">
+        <form 
+          className="form address-form"
+          action="/part1/pdf"
+          method="post"
+          target="_blank">
           <label htmlFor="address">Address </label>
           <input 
             type="text" 

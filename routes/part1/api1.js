@@ -2,7 +2,7 @@ const express = require('express');
 const part1Router = express.Router();
 const PDFDocument = require('pdfkit');
 
-part1Router.get('/pdf', (req, res, next)=>{
+part1Router.post('/pdf', (req, res, next)=>{
   let filename = 'myPdf';
   filename = encodeURIComponent(filename) + '.pdf';
 
