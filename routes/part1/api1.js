@@ -3,7 +3,7 @@ const part1Router = express.Router();
 const PDFDocument = require('pdfkit');
 
 const _createPdf = (res, {address, step}) => {
-  doc = new PDFDocument();
+  const doc = new PDFDocument();
 
   doc.text('BCG Digital Ventures', 60, 60, {
     align: 'center',
