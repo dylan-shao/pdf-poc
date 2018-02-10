@@ -1,6 +1,9 @@
 # dependencies
 /node_modules
 
+#ignore user uploaded files
+/public/files/upload
+
 # Logs
 logs
 *.log

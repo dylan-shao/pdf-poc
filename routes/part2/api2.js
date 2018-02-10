@@ -5,7 +5,7 @@ const pdfFiller = require('pdffiller');
 const multer  = require('multer');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/files')
+    cb(null, './public/files/upload/')
   },
   filename: function (req, file, cb) {
     // cb(null, file.originalname.slice(0, file.originalname.indexOf('.pdf')) + '_' + 'complete.pdf')
@@ -13,17 +13,27 @@ const storage = multer.diskStorage({
   }
 })
 
+let dataFields;
 const upload = multer({ storage: storage })
 
 part2Router.post('/upload', upload.single('myFile'), (req, res, next) => {
-  const sourcePDF = "./public/files/" + req.file.originalname;
+  const sourcePDF = "./public/files/upload/" + req.file.originalname;
 
   const FDF_data = pdfFiller.generateFDFTemplate(sourcePDF, null, (err, fdfData) => {
     if (err) throw err;
-    console.log(fdfData);
+    // res.end(JSON.stringify(fdfData));
+    // res.redirect('/part2/get');
+    // res.redirect('http://localhost:3000/part1');
+    console.log(fdfData)
+    // cache[req.file.filename] = fdfData;
+    dataFields = fdfData;
+    res.end(JSON.stringify(fdfData));    
   });
-
-  res.end('complete');
+  
 });
+
+part2Router.get('/get', (req,res) => {
+  res.end(JSON.stringify(dataFields));
+})
 
 module.exports = part2Router;

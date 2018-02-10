@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from '../common/Form';
 import axios from 'axios';
+import { Redirect, withRouter } from 'react-router';
 import './App2.css';
 
 const instance = axios.create({
@@ -10,8 +11,13 @@ const instance = axios.create({
 
 //keep it class to easy extend
 class App2 extends React.Component {
-
-  submitHandler = () => {
+  constructor() {
+    super();
+    this.state = {
+      results: {}
+    }
+  }
+  generateFields = () => {
     const myFile = this.input.files[0];
     var formData = new FormData();
     formData.append("myFile", myFile);
@@ -19,8 +25,12 @@ class App2 extends React.Component {
 
     instance.post('/part2/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
       .then(res => {
-        console.log(res)
-      })
+        if(Object.keys(res.data).length ===0) {
+          alert('No dta fields found!');
+        }else {
+          this.props.history.push('/part2/input');
+        }
+        })
       .catch(error => {
         console.log(error.response)
       });
@@ -51,11 +61,16 @@ class App2 extends React.Component {
       <div className="app2 container">
         <h1>Part 2</h1>
         <Form {...props}>
-          <button onClick={()=>this.submitHandler()}>submit</button>
+          <button onClick={()=>this.generateFields()}>generate fields</button>
         </Form>
+        {Object.keys(this.state.results).length &&
+          <Redirect to={{
+            pathname: '/part1',
+            state: { results: this.state.results }
+          }} />}
       </div>
     );
   }
 }
 
-export default App2;
+export default withRouter(App2);
