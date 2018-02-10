@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from '../common/Form';
 import './App1.css';
 
 class App1 extends Component {
@@ -30,25 +31,32 @@ class App1 extends Component {
   render() {
     const { address } = this.state;
     const { submitHandler } = this;
+    const props = {
+      header: 'Part 1',
+      form : {
+        class: 'form address-form',
+        action: '/part1/pdf',
+        method: 'post',
+        target: '_blank',
+        setRef: (form)=> {
+          this.form = form;
+        }
+      },
+      label: 'Address',
+      input: {
+        type: 'text',
+        name: 'address',
+        id: 'address',
+        value: address,
+        onChange: this.onChange
+      }
+    };
     return (
       <div className="app1 container">
-        <h1>Part 1</h1>
-        <form 
-          className="form address-form"
-          action="/part1/pdf"
-          method="post"
-          target="_blank"
-          ref={form=>{this.form = form;}}>
-          <label htmlFor="address">Address </label>
-          <input 
-            type="text" 
-            name="address"
-            id="address" 
-            value={address} 
-            onChange={this.onChange} />
-        </form>
-        <button onClick={()=>submitHandler(1)}>Generate smart_form_1.pdf</button>
-        <button onClick={()=>submitHandler(2)}>Generate smart_form_2.pdf</button>
+        <Form {...props}>
+          <button onClick={()=>submitHandler(1)}>Generate smart_form_1.pdf</button>
+          <button onClick={()=>submitHandler(2)}>Generate smart_form_2.pdf</button>
+        </Form>
       </div>
     );
   }
