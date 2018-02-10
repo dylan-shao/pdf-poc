@@ -20,10 +20,12 @@ class Form extends React.Component{
           id={input.id} 
           value={input.value} 
           onChange={input.onChange} />
+          <br />
+          {React.Children.map(children, child => {
+            return child
+          })}
       </form>
-      {React.Children.map(children, child => {
-        return child
-      })}
+      
     </div>
     );
   }
@@ -36,9 +38,7 @@ Form.defaultProps = {
     target: '_blank'
   },
   label: '',
-  input: {
-
-  }
+  input: {}
 }
 Form.propTypes = {
   header: string,
@@ -47,15 +47,16 @@ Form.propTypes = {
     action: string.isRequired,
     method: string.isRequired,
     target: string,
-    setRef: func
+    setRef: func,
   }),
   label: string,
   input: shape({
     type: string.isRequired,
     name: string.isRequired,
     id: string.isRequired,
-    value: string.isRequired,
+    value: string,
     onChange: func,
+    setRef: func,
   })
 }
 
