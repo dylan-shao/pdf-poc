@@ -15,8 +15,21 @@ class App1 extends Component {
     });
   }
 
+  submitHandler = n => {
+    const { form } = this;
+    var input = document.createElement("input");
+    input.type = "text";
+    input.name = "step";
+    input.value = n;
+    input.style.visibility = "hidden";
+    form.appendChild(input);
+    form.submit();
+    form.removeChild(input);
+  }
+
   render() {
     const { address } = this.state;
+    const { submitHandler } = this;
     return (
       <div className="App">
         <h1>Part 1</h1>
@@ -24,7 +37,8 @@ class App1 extends Component {
           className="form address-form"
           action="/part1/pdf"
           method="post"
-          target="_blank">
+          target="_blank"
+          ref={form=>{this.form = form;}}>
           <label htmlFor="address">Address </label>
           <input 
             type="text" 
@@ -32,9 +46,9 @@ class App1 extends Component {
             id="address" 
             value={address} 
             onChange={this.onChange} />
-          <button type="submit">Submit 1</button>
-          <button>Submit 2</button>
         </form>
+        <button onClick={()=>submitHandler(1)}>Generate smart_form_1.pdf</button>
+        <button onClick={()=>submitHandler(2)}>Generate smart_form_2.pdf</button>
       </div>
     );
   }
