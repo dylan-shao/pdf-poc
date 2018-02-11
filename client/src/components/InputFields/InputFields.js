@@ -28,7 +28,6 @@ class InputFields extends React.Component {
   onChange() {
 
   }
-  
 
   render() {
     const { fields } = this.state;
