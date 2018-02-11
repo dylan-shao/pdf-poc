@@ -14,6 +14,11 @@ Run server
 npm run dev
 ```
 
+then go to 
+```
+http://localhost:3000/part1
+http://localhost:3000/part2
+```
 
 ##Explanation
 ###pdf library used: 
