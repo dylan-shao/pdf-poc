@@ -3,6 +3,9 @@ Extracts the fields in pdf and give user ability to type in field and generate t
 
 ## Getting Started
 
+### Prerequisites
+pdftk, if you are using  OS X EI Capitan 10.11, please use [this version]([here](https://stackoverflow.com/questions/39750883/pdftk-hanging-on-macos-sierra)) to download, refer bottom to see more detailed inofrmation. 
+
 ### Installing
 install dependencies
 ```
@@ -33,3 +36,7 @@ for part 2
 ### two ways to show pdf
 * first way is the way in the code, it use the pdfkit to create a new pdf, so the content can be adjusted easily.
 * second way is to use fillpdf, but this way will end up with the underline under the content user provided, I have also included this code in the routes/part2/api2, so you can uncomment it to see the result
+
+### problems met
+There is a specific bug for OS X EI Capitan 10.11 only [here](https://github.com/pdffillerjs/pdffiller/issues/51) and [here](https://stackoverflow.com/questions/39750883/pdftk-hanging-on-macos-sierra), which took me quite while to solve.
+
