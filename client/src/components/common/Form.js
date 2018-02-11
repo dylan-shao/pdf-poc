@@ -1,5 +1,6 @@
 import React from 'react';
 import { string, shape, func } from 'prop-types';
+import './Form.css';
 
 //keep it class because I need to access 'refs' for different ele
 class Form extends React.Component{
@@ -7,7 +8,7 @@ class Form extends React.Component{
   render(){
     const { form, label, input, children } = this.props;
     return (
-    <div>
+    <div className="flex-container">
       <form 
         className={form.class}
         action={form.action}

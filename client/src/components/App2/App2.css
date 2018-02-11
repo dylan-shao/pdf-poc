@@ -1,3 +1,7 @@
 .app2 {
-  text-align: center;
+
+}
+
+input[type="text"] {
+  width: 500px;
 }
