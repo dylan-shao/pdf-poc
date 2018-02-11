@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "app-root-path": "^2.0.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "fill-pdf": "^1.1.0",

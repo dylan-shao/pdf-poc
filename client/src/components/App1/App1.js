@@ -57,6 +57,8 @@ class App1 extends Component {
           <a className="ui primary basic button" type="submit" onClick={()=>this.submitHandler(1)}>Generate smart_form_1.pdf</a>
           <a className="ui primary basic button"type="submit"onClick={()=>this.submitHandler(2)}>Generate smart_form_2.pdf</a>
         </Form>
+        <br />
+        <button className="ui basic button btn-dir" onClick={() =>this.props.history.push('/part2') }>Go to Part 2</button>
       </div>
     );
   }

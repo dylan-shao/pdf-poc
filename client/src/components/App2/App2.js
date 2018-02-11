@@ -1,7 +1,6 @@
 import React from 'react';
 import Form from '../common/Form';
 import axios from 'axios';
-import { withRouter } from 'react-router';
 import './App2.css';
 
 const axioProxy = axios.create({
@@ -18,6 +17,7 @@ class App2 extends React.Component {
     var formData = new FormData();
     formData.append("myFile", myFile);
 
+    //post then go to the form is has data, otherwise alert that there is no data
     axioProxy.post('/part2/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
       .then(res => {
         if(Object.keys(res.data).length ===0) {
@@ -61,9 +61,11 @@ class App2 extends React.Component {
         <Form {...props}>
           <button className="tiny ui button" type="submit">generate fields</button>
         </Form>
+        <br />
+        <button className="ui basic button" onClick={() =>this.props.history.push('/part1') }>Go to Part 1</button>
       </div>
     );
   }
 }
 
-export default withRouter(App2);
+export default App2;

@@ -11,6 +11,7 @@ ReactDOM.render(
   <div>
     <BrowserRouter>
       <Switch>
+        <Route exact path="/" component={App1} />
         <Route exact path="/part1" component={App1} />
         <Route exact path="/part2" component={App2} />
         <Route exact path="/inputfields" component={InputFields} />

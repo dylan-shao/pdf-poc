@@ -73,6 +73,9 @@ class InputFields extends React.Component {
            })}
           <button className="ui primary basic button" type="submit">Generate smarter Pdf</button>
         </Form>
+        <br />
+        <button className="ui basic button" onClick={() =>this.props.history.push('/part1') }>Go to Part 1</button>
+        <button className="ui basic button" onClick={() =>this.props.history.push('/part2') }>Go to Part 2</button>
       </div>
     );
   }
