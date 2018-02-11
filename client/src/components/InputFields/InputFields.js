@@ -12,7 +12,7 @@ class InputFields extends React.Component {
   constructor(){
     super();
     this.state = {
-      fields: {'df':''}
+      fields: {}
     };
   }
 
@@ -22,26 +22,30 @@ class InputFields extends React.Component {
         this.setState({
            fields: res.data,
         })
+     })
+     .catch(err=>{
+        console.log(err.response);
      });
   }
 
-  onChange() {
-
-  }
-
+  onChange = e => {
+    const { name, value} = e.target;
+    this.setState(prevState => {
+      return {fields: {...prevState.fields, [name]:value}}
+    });
+  };
+  
   render() {
     const { fields } = this.state;
     const keysArray = Object.keys(fields);
-    const length = keysArray.length;
     const _generateInput = (key) => {
       return (
-        <div className="input-item">
-          <label>{key}</label>
+        <div className="input-item" key={key}>
+          <label>{key.split('_').join(' ')}</label>
           <input 
             type='text'
             name={key} 
             id={key} 
-            key={key}
             value={fields[key]} 
             onChange={this.onChange}
           />
@@ -51,17 +55,15 @@ class InputFields extends React.Component {
     const props = {
       form : {
         class: 'form address-form',
-        action: '/part1/pdf',
+        action: '/part2/pdf',
         method: 'post',
         target: '_blank',
-        setRef: (form)=> {
-          this.form = form;
-        },
       },
       input: {
         flag: false,
       }
     };
+    
     return (
       <div className="container">
         <h1>Input Fields</h1>
@@ -69,6 +71,7 @@ class InputFields extends React.Component {
           {keysArray.map(key=>{
              return _generateInput(key);
            })}
+          <button className="ui primary basic button" type="submit">Generate smarter Pdf</button>
         </Form>
       </div>
     );

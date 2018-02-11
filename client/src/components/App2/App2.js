@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from '../common/Form';
 import axios from 'axios';
-import { Redirect, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 import './App2.css';
 
 const axioProxy = axios.create({
@@ -11,15 +11,12 @@ const axioProxy = axios.create({
 
 //keep it class to easy extend
 class App2 extends React.Component {
-  constructor() {
-    super();
-  }
+
   generateFields = (e) => {
     e.preventDefault();
     const myFile = this.input.files[0];
     var formData = new FormData();
     formData.append("myFile", myFile);
-    console.log(formData);
 
     axioProxy.post('/part2/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
       .then(res => {
@@ -62,7 +59,7 @@ class App2 extends React.Component {
       <div className="app2 container">
         <h1>Part 2</h1>
         <Form {...props}>
-          <button type="submit">generate fields</button>
+          <button className="tiny ui button" type="submit">generate fields</button>
         </Form>
       </div>
     );
