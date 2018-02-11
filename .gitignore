@@ -2,7 +2,9 @@
 /node_modules
 
 #ignore user uploaded files
-/public/files/upload
+/public/files/upload/*
+!/public/files/upload/smart_pdf_1.pdf
+!/public/files/upload/smart_pdf_2.pdf
 
 # Logs
 logs
