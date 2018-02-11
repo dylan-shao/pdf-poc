@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently \"node server.js\" \"npm start --prefix client/\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app-update": "npm update && npm update --prefix client/"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +19,7 @@
     "pdfkit": "^0.8.3"
   },
   "devDependencies": {
+    "concurrently": "^3.5.1",
     "nodemon": "^1.14.12"
   }
 }

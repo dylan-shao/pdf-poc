@@ -47,7 +47,7 @@ Form.defaultProps = {
   label: '',
   input: {
 
-  }
+  },
 }
 Form.propTypes = {
   form: shape({

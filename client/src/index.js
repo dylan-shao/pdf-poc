@@ -7,7 +7,6 @@ import InputFields from './components/InputFields';
 
 import './index.css';
 
-
 ReactDOM.render(
   <div>
     <BrowserRouter>

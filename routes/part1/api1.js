@@ -24,7 +24,6 @@ const _createPdf = (res, {address, step}) => {
 part1Router.post('/pdf', (req, res, next)=>{
   const { address } = req.body;
   let filename = address;
-  console.log(req.body);
   filename = encodeURIComponent(filename) + '.pdf';
 
   res.setHeader('Content-disposition', 'inline; filename="' + filename + '"');

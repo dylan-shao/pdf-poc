@@ -44,7 +44,6 @@ part2Router.post('/upload', upload.single('myFile'), (req, res, next) => {
 
   const FDF_data = pdfFiller.generateFDFTemplate(sourcePDF, null, (err, fdfData) => {
     if (err) throw err;
-    console.log(fdfData)
     dataFields = fdfData;
     res.end(JSON.stringify(fdfData));    
   });
@@ -62,13 +61,18 @@ part2Router.post('/pdf', (req, res, next)=>{
 
   const sourcePDF = appRoot + "/public/files/upload/" + filename;
   
+  /**
+   * uncomment this code to fill the pdf based on exist pdf, but his will show underline
+   * meantime you need to comment the _createPdf method 
+  */
   // fillPdf.generatePdf(req.body, sourcePDF, function(err, output) {
   //   if ( !err ) {
   //     res.setHeader('Content-length', output.length);
   //     res.end(output);
   //   }
   // });
-  
+
+  //this will generate a new pdf based on the content
   _createPdf(res, req.body);  
 });
 
