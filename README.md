@@ -4,7 +4,7 @@ Extracts the fields in pdf and give user ability to type in field and generate t
 ## Getting Started
 
 ### Prerequisites
-pdftk, if you are using  OS X EI Capitan 10.11, please use [this version]([here](https://stackoverflow.com/questions/39750883/pdftk-hanging-on-macos-sierra)) to download, refer bottom to see more detailed inofrmation. 
+pdftk, if you are using  OS X EI Capitan 10.11, please use [this version](https://stackoverflow.com/questions/39750883/pdftk-hanging-on-macos-sierra) to download, refer bottom to see more detailed inofrmation. 
 
 ### Installing
 install dependencies
